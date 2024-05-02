@@ -10,7 +10,7 @@ Subject: [PATCH] doc: move github issue template into top level directory
 
 diff --git a/.github/ISSUE_TEMPLATE/issue_template.md b/.github/ISSUE_TEMPLATE/issue_template.md
 deleted file mode 100644
-index 264a4f24c..000000000
+index 264a4f24c7..0000000000
 --- a/.github/ISSUE_TEMPLATE/issue_template.md
 +++ /dev/null
 @@ -1,37 +0,0 @@
@@ -52,5 +52,5 @@ index 264a4f24c..000000000
 -  * In the VirtualBox GUI click the three dots next to the
 -    guest VM name -> Logs -> Save
 -- 
-2.44.0
+2.43.0
 

@@ -10,7 +10,7 @@ Subject: [PATCH] GIMAll: add HyperV PV on KVM stub implementation
 
 diff --git a/src/VBox/VMM/VMMAll/GIMAllHvOnKvm.cpp b/src/VBox/VMM/VMMAll/GIMAllHvOnKvm.cpp
 new file mode 100644
-index 000000000..94870277d
+index 0000000000..94870277df
 --- /dev/null
 +++ b/src/VBox/VMM/VMMAll/GIMAllHvOnKvm.cpp
 @@ -0,0 +1,134 @@
@@ -149,5 +149,5 @@ index 000000000..94870277d
 +    AssertLogRelMsgReturn(false, ("%s", __PRETTY_FUNCTION__), VERR_NOT_SUPPORTED);
 +}
 -- 
-2.44.0
+2.43.0
 

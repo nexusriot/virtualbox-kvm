@@ -10,7 +10,7 @@ Subject: [PATCH] doc: Clarify KVM backend name
  2 files changed, 24 insertions(+), 24 deletions(-)
 
 diff --git a/README.intel-sriov-graphics.md b/README.intel-sriov-graphics.md
-index 0b287c483..6e5332150 100644
+index 0b287c4830..6e53321500 100644
 --- a/README.intel-sriov-graphics.md
 +++ b/README.intel-sriov-graphics.md
 @@ -1,8 +1,9 @@
@@ -36,7 +36,7 @@ index 0b287c483..6e5332150 100644
  - Configure ICH9 Chipset: `VBoxManage modifyvm <vm name> --chipset=ICH9`
  - Attach the vGPU: `VBoxManage modifyvm <vm name> --attachvfio /sys/bus/pci/devices/0000\:00\:02.1` (no trailing slash)
 diff --git a/README.md b/README.md
-index 6fafd2ed0..9f832c7fb 100644
+index 6fafd2ed06..9f832c7fb0 100644
 --- a/README.md
 +++ b/README.md
 @@ -1,19 +1,18 @@
@@ -136,5 +136,5 @@ index 6fafd2ed0..9f832c7fb 100644
 +for details. Make sure to follow [licensing conditions](https://www.virtualbox.org/wiki/Licensing_FAQ)
 +when redistributing.
 -- 
-2.44.0
+2.43.0
 

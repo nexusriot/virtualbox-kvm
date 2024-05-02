@@ -10,7 +10,7 @@ Subject: [PATCH] doc: move sr-iov graphics documentation into top-level
 
 diff --git a/README.intel-sriov-graphics.md b/README.intel-sriov-graphics.md
 deleted file mode 100644
-index 6e5332150..000000000
+index 6e53321500..0000000000
 --- a/README.intel-sriov-graphics.md
 +++ /dev/null
 @@ -1,112 +0,0 @@
@@ -127,5 +127,5 @@ index 6e5332150..000000000
 -    - `VBoxManage modifyvm <vm name> --graphicscontroller vboxsvga`
 -- After host suspend/resume, the graphics may recover when pressing `Win + Ctrl + Shift + B`. Some windows may stay black, in which case minimizing/maximizing may fix the problem.
 -- 
-2.44.0
+2.43.0
 

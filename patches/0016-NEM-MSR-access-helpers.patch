@@ -9,7 +9,7 @@ Subject: [PATCH] NEM: MSR access helpers
  2 files changed, 56 insertions(+)
 
 diff --git a/include/VBox/vmm/nem.h b/include/VBox/vmm/nem.h
-index 71f66d3db..860329785 100644
+index 71f66d3dba..8603297854 100644
 --- a/include/VBox/vmm/nem.h
 +++ b/include/VBox/vmm/nem.h
 @@ -170,6 +170,24 @@ VMMR3_INT_DECL(int)  NEMR3NotifyPhysRomRegisterLate(PVM pVM, RTGCPHYS GCPhys, RT
@@ -38,7 +38,7 @@ index 71f66d3db..860329785 100644
   * Asserts a specific interrupt line on both PIC and I/O APIC.
   * @param  pVM The cross context VM structure.
 diff --git a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
-index 2b78453e7..4e1876a94 100644
+index 2b78453e71..4e1876a944 100644
 --- a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
 +++ b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
 @@ -1562,6 +1562,44 @@ VMMR3_INT_DECL(int) NEMR3LoadExec(PVM pVM)
@@ -87,5 +87,5 @@ index 2b78453e7..4e1876a94 100644
  {
      struct kvm_lapic_state state;
 -- 
-2.44.0
+2.43.0
 

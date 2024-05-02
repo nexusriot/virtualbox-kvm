@@ -8,7 +8,7 @@ Subject: [PATCH] GIMHvOnKvm: reset HV MSRs on VM reset
  1 file changed, 20 insertions(+), 1 deletion(-)
 
 diff --git a/src/VBox/VMM/VMMR3/GIMHvOnKvm.cpp b/src/VBox/VMM/VMMR3/GIMHvOnKvm.cpp
-index 0360ae0b5..576e9dc21 100644
+index 0360ae0b52..576e9dc211 100644
 --- a/src/VBox/VMM/VMMR3/GIMHvOnKvm.cpp
 +++ b/src/VBox/VMM/VMMR3/GIMHvOnKvm.cpp
 @@ -451,15 +451,32 @@ VMMR3_INT_DECL(void) gimR3HvReset(PVM pVM)
@@ -55,5 +55,5 @@ index 0360ae0b5..576e9dc21 100644
      }
  }
 -- 
-2.44.0
+2.43.0
 

@@ -138,6 +138,15 @@ sudo systemctl reload systemd-udevd
 If you want to use the graphics virtualization features of modern Intel processors, please refer to our
 [SR-IOV Graphics Virtualization HowTo](README.intel-sriov-graphics.md).
 
+## Nested Virtualization
+
+If you want to use nested virtualization, you need to run the following command:
+```shell
+VBoxManage modifyvm <vm_name> --nested-hw-virt on
+```
+
+Please note that nested virtualization is only supported for Intel CPUs. Nested virtualization on AMD is currently unsupported.
+
 ## How to engage
 
 If you would like to use our KVM backend or if you have a need for custom

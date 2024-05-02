@@ -8,7 +8,7 @@ Subject: [PATCH] NEM/KVM: allow guests to use SHA-1 and SHA-256 extensions
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp b/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
-index 3d8832871..359af2b1d 100644
+index 3d88328714..359af2b1df 100644
 --- a/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
 +++ b/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
 @@ -1881,7 +1881,7 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
@@ -21,5 +21,5 @@ index 3d8832871..359af2b1d 100644
                                 //| RT_BIT(31) - reserved
                                 ;
 -- 
-2.44.0
+2.43.0
 

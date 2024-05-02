@@ -8,7 +8,7 @@ Subject: [PATCH] config: switch to split irq chip as default
  1 file changed, 1 deletion(-)
 
 diff --git a/Config.kmk b/Config.kmk
-index d353b0920..7d09ca397 100644
+index d353b0920f..7d09ca3972 100644
 --- a/Config.kmk
 +++ b/Config.kmk
 @@ -2009,7 +2009,6 @@ endif
@@ -20,5 +20,5 @@ index d353b0920..7d09ca397 100644
  ifndef VBOX_HEADLESS
   DEFS += VBOX_WITH_GVT_RENDERING
 -- 
-2.44.0
+2.43.0
 

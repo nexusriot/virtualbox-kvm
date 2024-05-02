@@ -9,7 +9,7 @@ This reverts commit 18a6f0a5a32bdb98031839974233909388c40e53.
  1 file changed, 8 deletions(-)
 
 diff --git a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
-index 4e1876a94..86717f842 100644
+index 4e1876a944..86717f8424 100644
 --- a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
 +++ b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
 @@ -1112,13 +1112,6 @@ int nemR3NativeInitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
@@ -35,5 +35,5 @@ index 4e1876a94..86717f842 100644
          /** @todo Specify other ranges too? Like hyper-V and KVM to make sure we get
           *        the MSR requests instead of KVM. */
 -- 
-2.44.0
+2.43.0
 

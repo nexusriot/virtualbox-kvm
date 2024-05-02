@@ -9,7 +9,7 @@ Subject: [PATCH] NEM/KVM: save/restore IA32_ARCH_CAPABILITIES and
  1 file changed, 4 insertions(+)
 
 diff --git a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
-index 94fdb9de5..043dc5322 100644
+index 94fdb9de50..043dc53220 100644
 --- a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
 +++ b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
 @@ -2186,6 +2186,8 @@ static int nemHCLnxImportState(PVMCPUCC pVCpu, uint64_t fWhat, PCPUMCTX pCtx, st
@@ -31,5 +31,5 @@ index 94fdb9de5..043dc5322 100644
               * We also have: Mttr*, MiscEnable, FeatureControl. */
          }
 -- 
-2.44.0
+2.43.0
 

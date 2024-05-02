@@ -8,7 +8,7 @@ Subject: [PATCH] NEM/KVM: allow guests to use ADX
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp b/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
-index bf0dc09af..3d8832871 100644
+index bf0dc09af9..3d88328714 100644
 --- a/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
 +++ b/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
 @@ -1871,7 +1871,7 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
@@ -21,5 +21,5 @@ index bf0dc09af..3d8832871 100644
                                 //| RT_BIT(21) - reserved
                                 //| RT_BIT(22) - reserved
 -- 
-2.44.0
+2.43.0
 

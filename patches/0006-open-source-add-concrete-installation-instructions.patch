@@ -8,7 +8,7 @@ Subject: [PATCH] open-source: add concrete installation instructions
  1 file changed, 20 insertions(+), 1 deletion(-)
 
 diff --git a/README.md b/README.md
-index 09ab81668..b143e2e15 100644
+index 09ab816686..b143e2e15e 100644
 --- a/README.md
 +++ b/README.md
 @@ -26,11 +26,30 @@ workload.
@@ -44,5 +44,5 @@ index 09ab81668..b143e2e15 100644
  to the following steps:
  
 -- 
-2.44.0
+2.43.0
 

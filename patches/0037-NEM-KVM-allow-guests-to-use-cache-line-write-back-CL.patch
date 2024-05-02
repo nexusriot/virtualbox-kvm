@@ -9,7 +9,7 @@ Subject: [PATCH] NEM/KVM: allow guests to use cache line write back (CLWB)
  2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/include/iprt/x86.h b/include/iprt/x86.h
-index 0233d41b1..abaf70224 100644
+index 0233d41b1c..abaf702247 100644
 --- a/include/iprt/x86.h
 +++ b/include/iprt/x86.h
 @@ -667,6 +667,8 @@ typedef const X86CPUIDFEATEDX *PCX86CPUIDFEATEDX;
@@ -22,7 +22,7 @@ index 0233d41b1..abaf70224 100644
  #define X86_CPUID_STEXT_FEATURE_EBX_INTEL_PT          RT_BIT_32(25)
  /** EBX Bit 26 - AVX512PF - Supports AVX512PF. */
 diff --git a/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp b/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
-index 4bf98a427..b4e84c63d 100644
+index 4bf98a427a..b4e84c63df 100644
 --- a/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
 +++ b/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
 @@ -1876,7 +1876,7 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
@@ -35,5 +35,5 @@ index 4bf98a427..b4e84c63d 100644
                                 //| X86_CPUID_STEXT_FEATURE_EBX_AVX512PF          RT_BIT(26)
                                 //| X86_CPUID_STEXT_FEATURE_EBX_AVX512ER          RT_BIT(27)
 -- 
-2.44.0
+2.43.0
 

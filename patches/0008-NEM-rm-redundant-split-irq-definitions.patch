@@ -8,7 +8,7 @@ Subject: [PATCH] NEM: rm redundant split irq definitions
  1 file changed, 63 deletions(-)
 
 diff --git a/include/VBox/vmm/nem.h b/include/VBox/vmm/nem.h
-index 26d055fcd..71f66d3db 100644
+index 26d055fcd0..71f66d3dba 100644
 --- a/include/VBox/vmm/nem.h
 +++ b/include/VBox/vmm/nem.h
 @@ -294,69 +294,6 @@ VMMR3_INT_DECL(int) NEMR3KvmGetHvCpuIdLeaves(PVM pVM, PCPUMCPUIDLEAF *outpCpuId,
@@ -82,5 +82,5 @@ index 26d055fcd..71f66d3db 100644
   * @{ */
  /** Set if the range is replacing RAM rather that unused space. */
 -- 
-2.44.0
+2.43.0
 

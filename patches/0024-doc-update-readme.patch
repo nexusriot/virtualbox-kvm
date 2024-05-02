@@ -8,7 +8,7 @@ Subject: [PATCH] doc: update readme
  1 file changed, 7 insertions(+)
 
 diff --git a/README.md b/README.md
-index 9f832c7fb..dbfa7a707 100644
+index 9f832c7fb0..dbfa7a707b 100644
 --- a/README.md
 +++ b/README.md
 @@ -53,6 +53,13 @@ After having all the prerequisites installed, the build process can be condensed
@@ -26,5 +26,5 @@ index 9f832c7fb..dbfa7a707 100644
  $ source ./env.sh
  $ kmk
 -- 
-2.44.0
+2.43.0
 

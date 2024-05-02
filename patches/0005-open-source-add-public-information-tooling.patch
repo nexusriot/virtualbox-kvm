@@ -18,7 +18,7 @@ open-source: add github issue template
 
 diff --git a/.github/ISSUE_TEMPLATE/issue_template.md b/.github/ISSUE_TEMPLATE/issue_template.md
 new file mode 100644
-index 000000000..264a4f24c
+index 0000000000..264a4f24c7
 --- /dev/null
 +++ b/.github/ISSUE_TEMPLATE/issue_template.md
 @@ -0,0 +1,37 @@
@@ -61,7 +61,7 @@ index 000000000..264a4f24c
 +    guest VM name -> Logs -> Save
 diff --git a/README.md b/README.md
 new file mode 100644
-index 000000000..09ab81668
+index 0000000000..09ab816686
 --- /dev/null
 +++ b/README.md
 @@ -0,0 +1,67 @@
@@ -133,5 +133,5 @@ index 000000000..09ab81668
 +If you encounter any issues please use the provided issue template and describe
 +your problem as detailed as possible.
 -- 
-2.44.0
+2.43.0
 

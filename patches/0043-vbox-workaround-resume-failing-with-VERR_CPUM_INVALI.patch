@@ -9,7 +9,7 @@ Subject: [PATCH] vbox: workaround resume failing with
  1 file changed, 11 insertions(+)
 
 diff --git a/src/VBox/VMM/VMMR3/CPUM.cpp b/src/VBox/VMM/VMMR3/CPUM.cpp
-index 7e0fbd32f..408102f8d 100644
+index 7e0fbd32fb..408102f8d9 100644
 --- a/src/VBox/VMM/VMMR3/CPUM.cpp
 +++ b/src/VBox/VMM/VMMR3/CPUM.cpp
 @@ -2845,10 +2845,21 @@ static DECLCALLBACK(int) cpumR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVers
@@ -35,5 +35,5 @@ index 7e0fbd32f..408102f8d 100644
                  if (pGstCtx->fXStateMask & XSAVE_C_YMM)
                  {
 -- 
-2.44.0
+2.43.0
 

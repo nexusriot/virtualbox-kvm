@@ -10,7 +10,7 @@ Subject: [PATCH] doc: move readme into top-level
 
 diff --git a/README.md b/README.md
 deleted file mode 100644
-index dbfa7a707..000000000
+index dbfa7a707b..0000000000
 --- a/README.md
 +++ /dev/null
 @@ -1,156 +0,0 @@
@@ -171,5 +171,5 @@ index dbfa7a707..000000000
 -for details. Make sure to follow [licensing conditions](https://www.virtualbox.org/wiki/Licensing_FAQ)
 -when redistributing.
 -- 
-2.44.0
+2.43.0
 

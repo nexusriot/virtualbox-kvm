@@ -8,7 +8,7 @@ Subject: [PATCH] doc: readme additions
  1 file changed, 63 insertions(+), 4 deletions(-)
 
 diff --git a/README.md b/README.md
-index b143e2e15..bdc3021f4 100644
+index b143e2e15e..bdc3021f46 100644
 --- a/README.md
 +++ b/README.md
 @@ -6,12 +6,12 @@ VirtualBox KVM uses Linux KVM as the underlying hypervisor.
@@ -110,5 +110,5 @@ index b143e2e15..bdc3021f4 100644
 +VirtualBox Open Source release it is derived from. See the `COPYING` file
 +for details.
 -- 
-2.44.0
+2.43.0
 

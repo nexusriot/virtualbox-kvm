@@ -1,0 +1,50 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Thomas Prescher <thomas.prescher@cyberus-technology.de>
+Date: Wed, 24 Apr 2024 16:35:43 +0200
+Subject: [PATCH] NEM/KVM: fix apic_base handling
+
+---
+ src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
+index 1f07ff889b..01424de056 100644
+--- a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
++++ b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
+@@ -2392,11 +2392,6 @@ static int nemHCLnxExportState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, struct kvm_
+                       | CPUMCTX_EXTRN_EFER      | CPUMCTX_EXTRN_APIC_TPR))
+         || uApicBase != pVCpu->nem.s.uKvmApicBase)
+     {
+-        if ((pVCpu->nem.s.uKvmApicBase ^ uApicBase) & MSR_IA32_APICBASE_EN)
+-            Log(("NEM/%u: APICBASE_EN changed %#010RX64 -> %#010RX64\n", pVCpu->idCpu, pVCpu->nem.s.uKvmApicBase, uApicBase));
+-        pRun->s.regs.sregs.apic_base = uApicBase;
+-        pVCpu->nem.s.uKvmApicBase    = uApicBase;
+-
+ #define NEM_LNX_EXPORT_SEG(a_KvmSeg, a_CtxSeg, dirty_flag) do { \
+             (a_KvmSeg).base     = (a_CtxSeg).u64Base; \
+             (a_KvmSeg).limit    = (a_CtxSeg).u32Limit; \
+@@ -2435,6 +2430,12 @@ static int nemHCLnxExportState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, struct kvm_
+ 
+         bool dirty_sregs = false;
+ 
++        if ((pVCpu->nem.s.uKvmApicBase ^ uApicBase) & MSR_IA32_APICBASE_EN)
++            Log(("NEM/%u: APICBASE_EN changed %#010RX64 -> %#010RX64\n", pVCpu->idCpu, pVCpu->nem.s.uKvmApicBase, uApicBase));
++
++        NEM_UPDATE_IF_CHANGED(pRun->s.regs.sregs.apic_base, uApicBase, dirty_sregs);
++        NEM_UPDATE_IF_CHANGED(pVCpu->nem.s.uKvmApicBase, uApicBase, dirty_sregs);
++
+         if (fExtrn & CPUMCTX_EXTRN_SREG_MASK)
+         {
+             if (fExtrn & CPUMCTX_EXTRN_ES and not NEM_LNX_SREG_IDENTICAL(pRun->s.regs.sregs.es, pCtx->es)) {
+@@ -3646,8 +3647,6 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
+ 
+                 TMNotifyStartOfExecution(pVM, pVCpu);
+ 
+-                uint64_t const uApicBase = APICGetBaseMsrNoCheck(pVCpu);
+-                pRun->apic_base = uApicBase;
+                 int rcLnx = ioctl(pVCpu->nem.s.fdVCpu, KVM_RUN, 0UL);
+                 int errno_ = errno;
+ 
+-- 
+2.43.0
+

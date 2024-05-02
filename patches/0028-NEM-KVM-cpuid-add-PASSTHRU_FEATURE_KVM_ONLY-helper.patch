@@ -8,7 +8,7 @@ Subject: [PATCH] NEM/KVM: cpuid: add PASSTHRU_FEATURE_KVM_ONLY helper
  1 file changed, 7 insertions(+)
 
 diff --git a/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp b/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
-index a5f48497a..b279a89d9 100644
+index a5f48497a1..b279a89d94 100644
 --- a/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
 +++ b/src/VBox/VMM/VMMR3/CPUMR3CpuId.cpp
 @@ -1331,6 +1331,13 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
@@ -26,5 +26,5 @@ index a5f48497a..b279a89d9 100644
       * EAX: CPU model, family and stepping.
       *
 -- 
-2.44.0
+2.43.0
 

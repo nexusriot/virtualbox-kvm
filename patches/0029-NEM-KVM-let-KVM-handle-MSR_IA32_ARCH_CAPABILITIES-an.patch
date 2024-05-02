@@ -9,7 +9,7 @@ Subject: [PATCH] NEM/KVM: let KVM handle MSR_IA32_ARCH_CAPABILITIES and
  1 file changed, 11 insertions(+)
 
 diff --git a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
-index 82ebed65e..94fdb9de5 100644
+index 82ebed65e6..94fdb9de50 100644
 --- a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
 +++ b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
 @@ -1031,8 +1031,17 @@ int nemR3NativeInitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
@@ -40,5 +40,5 @@ index 82ebed65e..94fdb9de5 100644
          MSR_RANGE_END(64);
  
 -- 
-2.44.0
+2.43.0
 

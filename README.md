@@ -160,7 +160,8 @@ your problem as detailed as possible.
 
 ## Licensing
 
-This source code is released under the same license terms as the original
-VirtualBox Open Source release it is derived from. See the upstream `COPYING` file
-for details. Make sure to follow [licensing conditions](https://www.virtualbox.org/wiki/Licensing_FAQ)
-when redistributing.
+This source code is released under the GPLv3, the same license terms as the
+original VirtualBox Open Source release it is derived from. See the `LICENSE`
+file and the upstream `COPYING` file for details. Make sure to follow
+[licensing conditions](https://www.virtualbox.org/wiki/Licensing_FAQ) when
+redistributing.

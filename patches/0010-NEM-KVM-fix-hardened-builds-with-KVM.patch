@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Thomas Prescher <thomas.prescher@cyberus-technology.de>
+Date: Wed, 15 May 2024 19:35:47 +0200
+Subject: [PATCH] NEM/KVM: fix hardened builds with KVM
+
+---
+ src/VBox/HostDrivers/Support/linux/SUPLib-linux.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/VBox/HostDrivers/Support/linux/SUPLib-linux.cpp b/src/VBox/HostDrivers/Support/linux/SUPLib-linux.cpp
+index 61ffb906da..c01a10cf59 100644
+--- a/src/VBox/HostDrivers/Support/linux/SUPLib-linux.cpp
++++ b/src/VBox/HostDrivers/Support/linux/SUPLib-linux.cpp
+@@ -96,6 +96,11 @@ DECLHIDDEN(int) suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, uint32_t fFlags
+         return VINF_SUCCESS;
+     Assert(pThis->hDevice == (intptr_t)NIL_RTFILE);
+ 
++#ifdef VBOX_WITH_KVM
++    pThis->fDriverless = true;
++    return VINF_SUCCESS;
++#endif
++
+     /*
+      * Check if madvise works.
+      */
+-- 
+2.43.0
+

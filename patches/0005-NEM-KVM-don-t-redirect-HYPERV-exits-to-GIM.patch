@@ -1,0 +1,41 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Thomas Prescher <thomas.prescher@cyberus-technology.de>
+Date: Wed, 22 May 2024 20:17:17 +0200
+Subject: [PATCH] NEM/KVM: don't redirect HYPERV exits to GIM
+
+The KVM hyperv interface exits when the guest writes to
+certain MSRs that hold physical addresses to inform the VMM
+that these pages have changed. This is especially important
+when the VMM uses overlays for these pages.
+
+It's also a quickpath for state save/resume scenarios because
+the VMM does not need to query the MSR from KVM again.
+
+VirtualBox does not use overlays and we read the contents of these
+MSRs explicitly in state save/resume situations. Thus, we do not
+care about these exits.
+---
+ src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
+index cb43dd2fea..0880ad2adb 100644
+--- a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
++++ b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
+@@ -3414,13 +3414,8 @@ static VBOXSTRICTRC nemHCLnxHandleExit(PVMCC pVM, PVMCPUCC pVCpu, struct kvm_run
+                 switch (pRun->hyperv.u.synic.msr)
+                 {
+                 case MSR_GIM_HV_SCONTROL:
+-                    gimHvWriteMsr(pVCpu, MSR_GIM_HV_SCONTROL, 0, pRun->hyperv.u.synic.control);
+-                    break;
+                 case MSR_GIM_HV_SIMP:
+-                    gimHvWriteMsr(pVCpu, MSR_GIM_HV_SIMP, 0, pRun->hyperv.u.synic.msg_page);
+-                    break;
+                 case MSR_GIM_HV_SIEFP:
+-                    gimHvWriteMsr(pVCpu, MSR_GIM_HV_SIEFP, 0, pRun->hyperv.u.synic.evt_page);
+                     break;
+                 default:
+                     AssertReleaseFailed();
+-- 
+2.43.0
+

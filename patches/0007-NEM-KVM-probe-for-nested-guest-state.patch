@@ -1,0 +1,43 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Thomas Prescher <thomas.prescher@cyberus-technology.de>
+Date: Wed, 22 May 2024 22:28:02 +0200
+Subject: [PATCH] NEM/KVM: probe for nested guest state
+
+---
+ src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp | 7 +++++++
+ src/VBox/VMM/include/NEMInternal.h       | 1 +
+ 2 files changed, 8 insertions(+)
+
+diff --git a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
+index 07a6db2772..92fca4ce7a 100644
+--- a/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
++++ b/src/VBox/VMM/VMMR3/NEMR3Native-linux.cpp
+@@ -3790,6 +3790,13 @@ VBOXSTRICTRC nemR3NativeRunGC(PVM pVM, PVMCPU pVCpu)
+                 fStatefulExit = false;
+                 if (RT_LIKELY(rcLnx == 0 || errno_ == EINTR))
+                 {
++#ifdef VBOX_WITH_KVM_NESTING
++                    if (pRun->exit_reason == KVM_EXIT_INTR) {
++                        pVCpu->nem.s.nestedGuestActive = KvmIsNestedGuestExit(pVM, pVCpu);
++                    } else {
++                        pVCpu->nem.s.nestedGuestActive = false;
++                    }
++#endif
+                     /*
+                      * Deal with the exit.
+                      */
+diff --git a/src/VBox/VMM/include/NEMInternal.h b/src/VBox/VMM/include/NEMInternal.h
+index a741fd64fb..4a71e004b0 100644
+--- a/src/VBox/VMM/include/NEMInternal.h
++++ b/src/VBox/VMM/include/NEMInternal.h
+@@ -379,6 +379,7 @@ typedef struct NEMCPU
+     /** KVM stats file descriptor for binary statistics */
+     int                         statsFd;
+     size_t                      guestModeStatOffset;
++    bool                        nestedGuestActive;
+ #endif
+ 
+ #if defined(IN_RING3) && defined(VBOX_WITH_KVM)
+-- 
+2.43.0
+

@@ -4060,7 +4060,7 @@ index 0000000000..fd6a56241c
 +DECLCALLBACK(void) vbvavirtioGpuPortReportHostCursorCapabilities(PPDMIDISPLAYPORT, bool, bool);
 +DECLCALLBACK(void) vbvavirtioGpuPortReportHostCursorPosition(PPDMIDISPLAYPORT, uint32_t, uint32_t, bool);
 diff --git a/src/VBox/Devices/Makefile.kmk b/src/VBox/Devices/Makefile.kmk
-index d2bef9129d..a4caa91016 100644
+index 90f01dbd20..69e96a4d82 100644
 --- a/src/VBox/Devices/Makefile.kmk
 +++ b/src/VBox/Devices/Makefile.kmk
 @@ -197,6 +197,10 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
@@ -4088,10 +4088,10 @@ index d2bef9129d..a4caa91016 100644
    VBoxDD_SOURCES += Storage/HBDMgmt-generic.cpp
   endif
 diff --git a/src/VBox/Devices/VirtIO/VirtioCore.cpp b/src/VBox/Devices/VirtIO/VirtioCore.cpp
-index f0ed6e4219..6e33955f09 100644
+index a0deddd698..669cf335c0 100644
 --- a/src/VBox/Devices/VirtIO/VirtioCore.cpp
 +++ b/src/VBox/Devices/VirtIO/VirtioCore.cpp
-@@ -1446,7 +1446,7 @@ static int virtioNudgeGuest(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint8_t uCa
+@@ -1451,7 +1451,7 @@ static int virtioNudgeGuest(PPDMDEVINS pDevIns, PVIRTIOCORE pVirtio, uint8_t uCa
  
      if (!pVirtio->fMsiSupport)
      {
@@ -4101,10 +4101,10 @@ index f0ed6e4219..6e33955f09 100644
      }
      else if (uMsixVector != VIRTIO_MSI_NO_VECTOR)
 diff --git a/src/VBox/Devices/build/VBoxDD.cpp b/src/VBox/Devices/build/VBoxDD.cpp
-index d601e45546..e7497c649f 100644
+index 8e51da7c4f..ea4353a2c7 100644
 --- a/src/VBox/Devices/build/VBoxDD.cpp
 +++ b/src/VBox/Devices/build/VBoxDD.cpp
-@@ -250,6 +250,9 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
+@@ -254,6 +254,9 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
      if (RT_FAILURE(rc))
          return rc;
  #endif
@@ -4115,7 +4115,7 @@ index d601e45546..e7497c649f 100644
      return VINF_SUCCESS;
  }
 diff --git a/src/VBox/Devices/build/VBoxDD.h b/src/VBox/Devices/build/VBoxDD.h
-index d208ea1e7f..63dedfaa64 100644
+index 0927d8a327..fbd4f800c9 100644
 --- a/src/VBox/Devices/build/VBoxDD.h
 +++ b/src/VBox/Devices/build/VBoxDD.h
 @@ -109,6 +109,7 @@ extern const PDMDEVREG g_DevicePciRaw;
@@ -4957,10 +4957,10 @@ index b4665d696c..1085b52865 100644
      /* ISA/LPC controller */
      {"lpc",           0, 31,  0, 0},
 diff --git a/src/VBox/Main/src-client/ConsoleImpl2.cpp b/src/VBox/Main/src-client/ConsoleImpl2.cpp
-index 7a4ee5db5f..b571253e26 100644
+index cc919754dc..112341cefe 100644
 --- a/src/VBox/Main/src-client/ConsoleImpl2.cpp
 +++ b/src/VBox/Main/src-client/ConsoleImpl2.cpp
-@@ -674,7 +674,7 @@ HRESULT Console::i_attachRawPCIDevices(PUVM pUVM, BusAssignmentManager *pBusMgr,
+@@ -677,7 +677,7 @@ HRESULT Console::i_attachRawPCIDevices(PUVM pUVM, BusAssignmentManager *pBusMgr,
  #endif
  
  
@@ -4969,7 +4969,7 @@ index 7a4ee5db5f..b571253e26 100644
  {
      HRESULT hrc {S_OK};
      PCFGMNODE pInst{NULL};
-@@ -734,6 +734,39 @@ HRESULT Console::i_attachVfioDevices(BusAssignmentManager *pBusMgr, PCFGMNODE pD
+@@ -737,6 +737,39 @@ HRESULT Console::i_attachVfioDevices(BusAssignmentManager *pBusMgr, PCFGMNODE pD
      return hrc;
  }
  
@@ -5009,7 +5009,7 @@ index 7a4ee5db5f..b571253e26 100644
  /**
   * Updates the device type for a LED.
   *
-@@ -1482,6 +1515,26 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
+@@ -1485,6 +1518,26 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
          bool         fGimDebug          = false;
          com::Utf8Str strGimDebugAddress = "127.0.0.1";
          uint32_t     uGimDebugPort      = 50000;
@@ -5036,7 +5036,7 @@ index 7a4ee5db5f..b571253e26 100644
          if (strParavirtDebug.isNotEmpty())
          {
              /* Hyper-V debug options. */
-@@ -1534,8 +1587,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
+@@ -1537,8 +1590,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
                  /* Update HyperV CFGM node with active debug options. */
                  if (fGimHvDebug)
                  {
@@ -5045,7 +5045,7 @@ index 7a4ee5db5f..b571253e26 100644
                      InsertConfigString(pHvNode,  "VendorID", strGimHvVendor);
                      InsertConfigInteger(pHvNode, "VSInterface", fGimHvVsIf ? 1 : 0);
                      InsertConfigInteger(pHvNode, "HypercallDebugInterface", fGimHvHypercallIf ? 1 : 0);
-@@ -1984,6 +2035,23 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
+@@ -1987,6 +2038,23 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
                  if (FAILED(vrc))
                      return vrc;
                  break;
@@ -5069,7 +5069,7 @@ index 7a4ee5db5f..b571253e26 100644
              default:
                  AssertMsgFailed(("Invalid graphicsController=%d\n", enmGraphicsController));
                  return pVMM->pfnVMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS,
-@@ -4374,7 +4442,8 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
+@@ -4387,7 +4455,8 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
                                          const ComPtr<IMachine> &ptrMachine,
                                          const ComPtr<IGraphicsAdapter> &ptrGraphicsAdapter,
                                          const ComPtr<IBIOSSettings> &ptrBiosSettings,
@@ -5079,7 +5079,7 @@ index 7a4ee5db5f..b571253e26 100644
  {
      // InsertConfig* throws
      try
-@@ -4391,11 +4460,24 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
+@@ -4404,11 +4473,24 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
  
          hrc = pBusMgr->assignPCIDevice(pcszDevice, pInst);                                  H();
          InsertConfigNode(pInst,    "Config", &pCfg);

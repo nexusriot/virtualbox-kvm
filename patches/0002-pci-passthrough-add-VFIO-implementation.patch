@@ -2053,7 +2053,7 @@ index 0000000000..d8cf3ef1b0
 +    return {barValue & std::numeric_limits<uint32_t>::max()};
 +}
 diff --git a/src/VBox/Devices/Makefile.kmk b/src/VBox/Devices/Makefile.kmk
-index a17e655fa7..d2bef9129d 100644
+index 3e22f141b8..90f01dbd20 100644
 --- a/src/VBox/Devices/Makefile.kmk
 +++ b/src/VBox/Devices/Makefile.kmk
 @@ -187,6 +187,8 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
@@ -2077,7 +2077,7 @@ index a17e655fa7..d2bef9129d 100644
   ifn1of ($(KBUILD_TARGET), darwin)
    VBoxDD_SOURCES += Storage/HBDMgmt-generic.cpp
 diff --git a/src/VBox/Devices/build/VBoxDD.cpp b/src/VBox/Devices/build/VBoxDD.cpp
-index 36b12c694f..d601e45546 100644
+index 1e88822d41..8e51da7c4f 100644
 --- a/src/VBox/Devices/build/VBoxDD.cpp
 +++ b/src/VBox/Devices/build/VBoxDD.cpp
 @@ -218,6 +218,9 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
@@ -2091,7 +2091,7 @@ index 36b12c694f..d601e45546 100644
      if (RT_FAILURE(rc))
          return rc;
 diff --git a/src/VBox/Devices/build/VBoxDD.h b/src/VBox/Devices/build/VBoxDD.h
-index 9350f42885..d208ea1e7f 100644
+index e451abcdd5..0927d8a327 100644
 --- a/src/VBox/Devices/build/VBoxDD.h
 +++ b/src/VBox/Devices/build/VBoxDD.h
 @@ -107,6 +107,7 @@ extern const PDMDEVREG g_DeviceEFI;
@@ -2292,10 +2292,10 @@ index a8d36d0717..b4665d696c 100644
      /* ISA/LPC controller */
      {"lpc",           0, 31,  0, 0},
 diff --git a/src/VBox/Main/src-client/ConsoleImpl2.cpp b/src/VBox/Main/src-client/ConsoleImpl2.cpp
-index 3576c49354..7a4ee5db5f 100644
+index cf57754ded..cc919754dc 100644
 --- a/src/VBox/Main/src-client/ConsoleImpl2.cpp
 +++ b/src/VBox/Main/src-client/ConsoleImpl2.cpp
-@@ -674,6 +674,66 @@ HRESULT Console::i_attachRawPCIDevices(PUVM pUVM, BusAssignmentManager *pBusMgr,
+@@ -677,6 +677,66 @@ HRESULT Console::i_attachRawPCIDevices(PUVM pUVM, BusAssignmentManager *pBusMgr,
  #endif
  
  
@@ -2362,7 +2362,7 @@ index 3576c49354..7a4ee5db5f 100644
  /**
   * Updates the device type for a LED.
   *
-@@ -1734,6 +1794,8 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
+@@ -1737,6 +1797,8 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, PCVMMR3VTABLE pVMM, Au
              }
          }
  
